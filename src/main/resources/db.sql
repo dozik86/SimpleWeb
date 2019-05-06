@@ -11,29 +11,26 @@ CREATE TABLE public.employee
 
 CREATE UNIQUE INDEX employee_employee_id_uindex ON public.employee (employee_id);
 
-INSERT INTO employee (
-first_name,
-last_name,
-department_id,
-job_title,
-gender,
-date_of_bith)
+INSERT INTO employee (first_name,
+                      last_name,
+                      department_id,
+                      job_title,
+                      gender,
+                      date_of_bith)
 values ('Eugene', 'Sobakevich', '1', 'developer', 'male', '1995-05-06');
 
-INSERT INTO employee(
-first_name,
-last_name,
-department_id,
-job_title,
-gender,
-date_of_bith)
+INSERT INTO employee(first_name,
+                     last_name,
+                     department_id,
+                     job_title,
+                     gender,
+                     date_of_bith)
 values ('Alex', 'Simonov', '2', 'QA', 'male', '1986-06-26');
 
-INSERT INTO employee(
-first_name,
-last_name,
-department_id,
-job_title,
-gender,
-date_of_bith)
+INSERT INTO employee(first_name,
+                     last_name,
+                     department_id,
+                     job_title,
+                     gender,
+                     date_of_bith)
 values ('Elizabeth', 'Gingerbread', '1', 'developer', 'female', '1995-12-05');
