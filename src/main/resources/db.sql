@@ -1,12 +1,12 @@
 CREATE TABLE public.employee
 (
-    employee_id   SERIAL      NOT NULL,
-    first_name    VARCHAR(25) NOT NULL,
-    last_name     VARCHAR(25) NOT NULL,
-    department_id INTEGER     NOT NULL,
-    job_title     VARCHAR(35) NOT NULL,
-    gender        VARCHAR(10) NOT NULL,
-    date_of_bith  date        NOT NULL
+    employee_id   SERIAL PRIMARY KEY NOT NULL,
+    first_name    VARCHAR(25)        NOT NULL,
+    last_name     VARCHAR(25)        NOT NULL,
+    department_id INTEGER            NOT NULL,
+    job_title     VARCHAR(35)        NOT NULL,
+    gender        VARCHAR(10)        NOT NULL,
+    date_of_bith  date               NOT NULL
 );
 
 CREATE UNIQUE INDEX employee_employee_id_uindex ON public.employee (employee_id);

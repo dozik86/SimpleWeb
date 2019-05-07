@@ -89,7 +89,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
             <configuration>
-                <mainClass>App</mainClass>
+                <mainClass>com.mastery.java.App</mainClass>
             </configuration>
         </plugin>
     </plugins>
