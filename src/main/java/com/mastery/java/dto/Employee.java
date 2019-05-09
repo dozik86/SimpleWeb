@@ -9,7 +9,7 @@ public class Employee {
     private int department_id;
     private String job_title;
     private String gender;
-    private LocalDate date_of_bith;
+    private String date_of_bith;
 
     public Employee() {
     }
@@ -62,11 +62,11 @@ public class Employee {
         this.gender = gender;
     }
 
-    public LocalDate getDate_of_bith() {
+    public String getDate_of_bith() {
         return date_of_bith;
     }
 
-    public void setDate_of_bith(LocalDate date_of_bith) {
+    public void setDate_of_bith(String date_of_bith) {
         this.date_of_bith = date_of_bith;
     }
 
