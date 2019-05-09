@@ -1,25 +1,32 @@
 package com.mastery.java.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.LocalDate;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee {
-    private int id;
+
+
+    private int employee_id;
     private String first_name;
     private String last_name;
     private int department_id;
     private String job_title;
     private String gender;
-    private String date_of_bith;
+    private LocalDate date_of_birth;
 
     public Employee() {
     }
 
-    public int getId() {
-        return id;
+
+
+    public int getEmployee_id() {
+        return employee_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
     }
 
     public String getFirst_name() {
@@ -62,24 +69,25 @@ public class Employee {
         this.gender = gender;
     }
 
-    public String getDate_of_bith() {
-        return date_of_bith;
+    public LocalDate getDate_of_birth() {
+        return date_of_birth;
     }
 
-    public void setDate_of_bith(String date_of_bith) {
-        this.date_of_bith = date_of_bith;
+    public void setDate_of_birth(String date_of_birth) {
+        this.date_of_birth = LocalDate.parse(date_of_birth);
     }
+
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
+        return "employeeDao{" +
+                "employee_id=" + employee_id +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", department_id=" + department_id +
                 ", job_title='" + job_title + '\'' +
                 ", gender='" + gender + '\'' +
-                ", date_of_bith=" + date_of_bith +
+                ", date_of_birth='" + date_of_birth + '\'' +
                 '}';
     }
 }

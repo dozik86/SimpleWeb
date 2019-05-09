@@ -1,59 +1,56 @@
 package com.mastery.java.controller;
 
-
 import com.mastery.java.dto.Employee;
 import com.mastery.java.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping("/")
+import javax.annotation.Resource;
+import java.util.List;
+
+@RestController
+@RequestMapping("employ")
 public class EmployeeController {
 
+    private final EmployeeService employeeService;
+
     @Autowired
-    private EmployeeService employeeService;
-
-    @GetMapping(value = "/employees")
-    public String getAllEmployee(Model model){
-        model.addAttribute("employee",employeeService.fidnAll());
-        return "employeesList";
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
-    @GetMapping("/employee2/{id}")
-    public @ResponseBody
-    Employee findId(@PathVariable("id") int id, Model model){
-        model.addAttribute("employee", employeeService.getId(id));
-        return employeeService.getId(id);
+    @GetMapping
+    public List<Employee> getEmployee(){
+        return employeeService.getAll();
+
     }
 
-    @GetMapping("/addEmployee")
-    public String createEmployeesPage() {
-        return "createEmployee";
+    @GetMapping("{id}")
+    public Employee getOne(@PathVariable int id){
+        return employeeService.getEmployee(id);
     }
 
-    @PostMapping("/addEmployee")
-    public String addEmployee(@ModelAttribute("employee")Employee employee) {
-        employeeService.add(employee);
-        return "redirect:/employees";
+    @DeleteMapping("{id}")
+
+    public Employee delete(@PathVariable int id){
+        Employee employee = employeeService.getEmployee(id);
+        employeeService.delEmployee(id);
+        return employee;
     }
 
-    @PostMapping("/updateEmployee")
-    public String updateEmployee(@ModelAttribute("employee")Employee employee) {
-        employeeService.update(employee);
-        return "redirect:/employee/" + employee.getId();
+    @PostMapping
+    public Employee create(@RequestBody Employee employee){
+        employeeService.createEmployee(employee);
+        return employee;
     }
 
-    @GetMapping("/update/{id}")
-    public String updateEmployee(@PathVariable("id") int id, Model model) {
-        model.addAttribute("employee", employeeService.getId(id));
-        return "editEmployee";
+
+
+    @PutMapping("{id}")
+    public Employee update (@PathVariable int id, @RequestBody Employee employee){
+        employeeService.updateEmployee(id, employee);
+        return employee;
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteEmployee(@PathVariable("id") int id) {
-        employeeService.delete(id);
-        return "redirect:/employees";
-    }
+
 }
