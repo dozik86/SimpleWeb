@@ -20,34 +20,33 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public List<Employee> getEmployee(){
+    public List<Employee> getEmployee() {
         return employeeService.getAll();
 
     }
 
     @GetMapping("{id}")
-    public Employee getOne(@PathVariable int id){
+    public Employee getOne(@PathVariable int id) {
         return employeeService.getEmployee(id);
     }
 
     @DeleteMapping("{id}")
 
-    public Employee delete(@PathVariable int id){
+    public Employee delete(@PathVariable int id) {
         Employee employee = employeeService.getEmployee(id);
         employeeService.delEmployee(id);
         return employee;
     }
 
     @PostMapping
-    public Employee create(@RequestBody Employee employee){
+    public Employee create(@RequestBody Employee employee) {
         employeeService.createEmployee(employee);
         return employee;
     }
 
 
-
     @PutMapping("{id}")
-    public Employee update (@PathVariable int id, @RequestBody Employee employee){
+    public Employee update(@PathVariable int id, @RequestBody Employee employee) {
         employeeService.updateEmployee(id, employee);
         return employee;
     }

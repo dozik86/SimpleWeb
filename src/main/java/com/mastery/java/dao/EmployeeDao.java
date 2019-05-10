@@ -17,7 +17,7 @@ public class EmployeeDao {
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     @Autowired
-    public EmployeeDao (EmployeeMapper employeeMapper, NamedParameterJdbcTemplate jdbcTemplate) {
+    public EmployeeDao(EmployeeMapper employeeMapper, NamedParameterJdbcTemplate jdbcTemplate) {
         this.employeeMapper = employeeMapper;
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -25,7 +25,7 @@ public class EmployeeDao {
 
     public Employee getEmployeeById(int id) {
 
-        String sql ="Select * from employee where employee_id =:id";
+        String sql = "Select * from employee where employee_id =:id";
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("id", id);
 
@@ -34,7 +34,7 @@ public class EmployeeDao {
 
     public void delEmployeeById(int id) {
         KeyHolder holder = new GeneratedKeyHolder();
-        String sql ="DELETE from employee where employee_id = :id";
+        String sql = "DELETE from employee where employee_id = :id";
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("id", id);
 
@@ -42,15 +42,14 @@ public class EmployeeDao {
     }
 
 
-    public List<Employee> findAll(){
-        return  jdbcTemplate.query("Select * from employee", employeeMapper);
+    public List<Employee> findAll() {
+        return jdbcTemplate.query("Select * from employee", employeeMapper);
     }
-
 
 
     public Employee createEmployee(Employee employee) {
         KeyHolder holder = new GeneratedKeyHolder();
-        String sql ="INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth) VALUES (:first_name,:last_name,:department_id,:job_title,:gender,:date_of_birth)";
+        String sql = "INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth) VALUES (:first_name,:last_name,:department_id,:job_title,:gender,:date_of_birth)";
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("first_name", employee.getFirst_name());
         params.addValue("last_name", employee.getLast_name());
@@ -59,14 +58,14 @@ public class EmployeeDao {
         params.addValue("gender", employee.getGender());
         params.addValue("date_of_birth", employee.getDate_of_birth());
 
-        jdbcTemplate.update(sql,params,holder, new String[] { "employee_id" });
+        jdbcTemplate.update(sql, params, holder, new String[]{"employee_id"});
         employee.setEmployee_id(holder.getKey().intValue());
         return employee;
     }
 
-    public Employee updateEmployee(int employee_id, Employee employee){
+    public Employee updateEmployee(int employee_id, Employee employee) {
         KeyHolder holder = new GeneratedKeyHolder();
-        String sql ="UPDATE  employee SET first_name=:first_name, last_name=:last_name, department_id=:department_id, job_title=:job_title, gender=:gender, date_of_birth=:date_of_birth WHERE employee_id=:employee_id";
+        String sql = "UPDATE  employee SET first_name=:first_name, last_name=:last_name, department_id=:department_id, job_title=:job_title, gender=:gender, date_of_birth=:date_of_birth WHERE employee_id=:employee_id";
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("employee_id", employee_id);
         params.addValue("first_name", employee.getFirst_name());
@@ -76,7 +75,7 @@ public class EmployeeDao {
         params.addValue("gender", employee.getGender());
         params.addValue("date_of_birth", employee.getDate_of_birth());
 
-        jdbcTemplate.update(sql,params,holder, new String[] { "employee_id" });
+        jdbcTemplate.update(sql, params, holder, new String[]{"employee_id"});
         return employee;
     }
 

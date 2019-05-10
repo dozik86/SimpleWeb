@@ -14,19 +14,19 @@ public class EmployeeService {
     private final EmployeeDao employeeDao;
 
     @Autowired
-    public EmployeeService(EmployeeDao employeeDao){
+    public EmployeeService(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
 
-    public List<Employee> getAll(){
+    public List<Employee> getAll() {
         return employeeDao.findAll();
     }
 
-    public Employee getEmployee(int employee_id){
+    public Employee getEmployee(int employee_id) {
         return employeeDao.getEmployeeById(employee_id);
     }
 
-    public void delEmployee(int employee_id){
+    public void delEmployee(int employee_id) {
         employeeDao.delEmployeeById(employee_id);
     }
 
@@ -34,8 +34,8 @@ public class EmployeeService {
         return employeeDao.createEmployee(employee);
     }
 
-    public  Employee updateEmployee(int employee_id, Employee employee){
-        return  employeeDao.updateEmployee(employee_id, employee);
+    public Employee updateEmployee(int employee_id, Employee employee) {
+        return employeeDao.updateEmployee(employee_id, employee);
     }
 
 }

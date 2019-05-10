@@ -9,9 +9,8 @@ CREATE TABLE public.employee
     date_of_birth date        NOT NULL
 );
 
-CREATE UNIQUE INDEX employee_empoyee_id_uindex ON public.employee (employee_id);
+CREATE UNIQUE INDEX employee_employee_id_uindex ON public.employee (employee_id);
 
--- CREATE UNIQUE INDEX employee_employee_id_uindex ON public.employee (employee_id);
 
 INSERT INTO employee (first_name,
                       last_name,
